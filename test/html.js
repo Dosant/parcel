@@ -534,4 +534,19 @@ describe('html', function() {
       ]
     });
   });
+
+  it('should support object tags', async function() {
+    let b = await bundle(__dirname + '/integration/html-object/index.html');
+
+    assertBundleTree(b, {
+      name: 'index.html',
+      assets: ['index.html'],
+      childBundles: [
+        {
+          type: 'svg',
+          assets: ['file.svg']
+        }
+      ]
+    });
+  });
 });
